@@ -1,0 +1,11 @@
+<div class="dialog-text" *ngIf="isEdit">
+    You have successfully updated user #{{userIndex}}
+</div>
+<div class="dialog-text" *ngIf="!isEdit">
+    You have successfully created user #{{userIndex}}
+</div>
+<div class="confirm-button">
+    <section >
+        <button mat-raised-button color="warn" (click)="close()">Confirm</button>
+    </section> 
+</div>

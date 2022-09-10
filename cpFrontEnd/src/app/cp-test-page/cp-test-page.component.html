@@ -1,0 +1,73 @@
+<div class="w-100-p h-100-p mainForm">
+  <div style="margin-top:20px"><h2>User Permissions</h2></div>
+  <mat-divider></mat-divider>
+  <div class="mat-elevation-z2 addCustomer">
+    <div class="addNewUserTitle">
+      <h2>Add New User</h2>
+    </div>
+    <div>
+      <section class="addSection margin-bottom-10 ">
+        <mat-checkbox  (change)="changeRules($event, null,'customerBuyIsChecked')">Customer Buy</mat-checkbox>
+        <mat-checkbox class="padding-left-8" (change)="changeRules($event, null,'customerSellIsChecked')" >Customer Sell</mat-checkbox>
+        <mat-checkbox class="padding-left-8" (change)="changeRules($event, null,'consultantBuyIsChecked')">Consultant Buy</mat-checkbox>
+        <mat-checkbox class="padding-left-8" (change)="changeRules($event, null,'consultantSellIsChecked')">Consultant Sell</mat-checkbox>
+      </section>
+    </div>
+    <div class="padding-top-10">
+      <section class="addSection">
+        <button mat-raised-button color="warn" (click)="CreateCustomer()">Create New</button>
+      </section>
+    </div>
+  
+  </div>
+  <mat-divider></mat-divider>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 margin-top-20 ">
+  
+    
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.customerId}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="customerBuy">
+        <th mat-header-cell *matHeaderCellDef> Customer Buy </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-checkbox class="padding-left-8" (change)="changeRules($event, element,'customerBuy')" [checked]="element.customerBuy"></mat-checkbox>
+        </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="customerSell">
+        <th mat-header-cell *matHeaderCellDef> Customer Sell </th>
+        <td mat-cell *matCellDef="let element"> 
+          <mat-checkbox class="padding-left-8" (change)="changeRules($event, element,'customerSell')" [checked]="element.customerSell"></mat-checkbox>
+        </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="consultantBuy">
+        <th mat-header-cell *matHeaderCellDef> Consultant Buy </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-checkbox class="padding-left-8" (change)="changeRules($event, element,'consultantBuy')" [checked]="element.consultantBuy"></mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="consultantSell">
+        <th mat-header-cell *matHeaderCellDef> Consultant Sell </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-checkbox class="padding-left-8" (change)="changeRules($event, element,'consultantSell')" [checked]="element.consultantSell"></mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="updateButton">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> 
+          <section class="addSection">
+            <button mat-raised-button (click)="UpdateCustomer(element.customerId)">Update</button>
+          </section> 
+      </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
